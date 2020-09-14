@@ -1,7 +1,7 @@
-from selenium import webdriver
 from time import sleep
 
-# from secrets import username, password
+from selenium import webdriver
+
 username = ''
 password = ''
 
@@ -14,13 +14,6 @@ class LinkedinBot():
         self.driver.get('https://www.linkedin.com/')
 
         sleep(2)
-
-        # fb_btn = self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div/div/div[3]/div[2]/button')
-        # fb_btn.click()
-
-        # # switch to login popup
-        # base_window = self.driver.window_handles[0]
-        # self.driver.switch_to_window(self.driver.window_handles[1])
 
         email_in = self.driver.find_element_by_xpath('//input[@name="session_key"]')
         email_in.send_keys(username)
@@ -38,7 +31,6 @@ class LinkedinBot():
         keep_connecting = self.driver.find_element_by_xpath('/html/body/div[7]/div/div/div/div/div/ul/li[1]/section/footer/button')
         keep_connecting.click()
 
-        
         # choose a number of new connections to make
         for i in range(1, 150):
             sleep(0.5)
@@ -46,14 +38,9 @@ class LinkedinBot():
             try:
                     popup_1 = self.driver.find_element_by_xpath(xpath)
                     popup_1.click()
-            except Exception:
-                    pass
+            except Exception as e:
+                    print(e)
             sleep(1)
-
-        
-        sleep(3)
-
-
 
 
 bot = LinkedinBot()
