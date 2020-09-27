@@ -1,6 +1,7 @@
 from time import sleep
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 username = ''
 password = ''
@@ -21,8 +22,7 @@ class LinkedinBot():
         pw_in = self.driver.find_element_by_xpath('//input[@name="session_password"]')
         pw_in.send_keys(password)
 
-        login_btn = self.driver.find_element_by_xpath('/html/body/nav/section[2]/form/div[2]/button')
-        login_btn.click()
+        pw_in.send_keys(Keys.RETURN)
         
         sleep(3)
         
